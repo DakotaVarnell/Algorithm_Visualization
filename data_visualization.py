@@ -21,3 +21,6 @@ sorted, revers, ran = generate_lists(10)
 print(sorted)
 print(revers)
 print(ran)
+
+
+#nick
