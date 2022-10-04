@@ -31,19 +31,19 @@ def generate_lists(n):
     return sorted_list, reversed_list, random_list
 
 #IT'S RECOMMENDED TO USE SMALL LISTS AS INPUT
-# def bubble_sort_visualized(myList):
-#     x = np.arange(0, len(myList), 1)
-#     wait_time = .000001
-#     for i in range(len(myList)-1):
-#         for j in range(len(myList)-i-1):
-#             plt.bar(x, myList) #creates a bar for each element in myList
-#             plt.pause(wait_time) #pause to allow the bars to be seen
-#             plt.clf() #clear frame
-#             if myList[j] > myList[j + 1]: #if the current value is greater than the next
-#                 myList[j], myList[j+1] = \
-#                     myList[j + 1], myList[j] #swap them
-#     return myList
-#     plt.show()
+def bubble_sort_visualized(myList):
+    x = np.arange(0, len(myList), 1)
+    wait_time = .000001
+    for i in range(len(myList)-1):
+        for j in range(len(myList)-i-1):
+            plt.bar(x, myList) #creates a bar for each element in myList
+            plt.pause(wait_time) #pause to allow the bars to be seen
+            plt.clf() #clear frame
+            if myList[j] > myList[j + 1]: #if the current value is greater than the next
+                myList[j], myList[j+1] = \
+                    myList[j + 1], myList[j] #swap them
+    return myList
+    plt.show()
     
 
 def bubble_sort(myList):
@@ -175,14 +175,20 @@ def insertion_sort_visualized():
     return
 
 def __main__ ():
+
+    #Produce our 3 lists for sorted list, reverse list, and random order list
     sorted, revers, ran = generate_lists(10)
 
-    #x = bubble_sort_visualized(ran)
-    #print(bubble_sort(ran))
-    #print(merge_sort(ran))
-    #print(quicksort(ran))
-    #print(insertion_sort(ran))
+    #visualize our bubble sort
+    x = bubble_sort_visualized(ran)
 
+    #Show that all of ours sorts are working properly
+    print(bubble_sort(ran))
+    print(merge_sort(ran))
+    print(quicksort(ran))
+    print(insertion_sort(ran))
+
+#Call our main
 __main__()
     
 
