@@ -188,7 +188,7 @@ def __main__ ():
     print(quicksort(ran))
     print(insertion_sort(ran))
 
-#Call our main
+#Call our main function
 __main__()
     
 
