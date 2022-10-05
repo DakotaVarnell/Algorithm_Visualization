@@ -1,8 +1,9 @@
 import random
+from turtle import color
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import numpy as np
-import scipy as sp
+import time
 
 #------------IMPORTANT------------#
 #matplotlib, numpy and scipy must be installed to successfully compile this program
@@ -59,173 +60,120 @@ def bubble_sort_visualized(myList):
             if myList[j] > myList[j + 1]: #if the current value is greater than the next
                 myList[j], myList[j+1] = \
                     myList[j + 1], myList[j] #swap them
-        
+            
+    time.sleep(1)
     return myList
-plt.show() 
 #------------BUBBLE SORT------------
 
 
 #------------MERGE SORT------------
-def merge_sort_visualized(list):
+def merge_sort_visualized(arr):
 
-    x = np.arange(0, len(list), 1)
+    x = np.arange(0, len(arr), 1)
     wait_time = .000001
 
-    plt.bar(x, list, align="edge", width=0.8) #creates a bar for each element in myList
+    # The last array split
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+
+    # plt.bar(x, arr, align="edge", width=0.8) #creates a bar for each element in myList
+    # plt.pause(wait_time) #pause to allow the bars to be seen
+    # plt.clf() #clear frame
+
+    # Perform merge_sort recursively on both halves
+    left, right = merge_sort_visualized(arr[:mid]), merge_sort_visualized(arr[mid:])
+
+    # Merge each side together
+    return merge(left, right, arr.copy())
+
+
+def merge(left, right, merged):
+
+    x = np.arange(0, len(merged), 1)
+    wait_time = .000001
+
+    left_cursor, right_cursor = 0, 0
+    while left_cursor < len(left) and right_cursor < len(right):
+      
+        # Sort each one and place into the result
+        if left[left_cursor] <= right[right_cursor]:
+            merged[left_cursor+right_cursor]=left[left_cursor]
+            left_cursor += 1
+        else:
+            merged[left_cursor + right_cursor] = right[right_cursor]
+            right_cursor += 1
+            
+    for left_cursor in range(left_cursor, len(left)):
+        merged[left_cursor + right_cursor] = left[left_cursor]
+        
+    for right_cursor in range(right_cursor, len(right)):
+        merged[left_cursor + right_cursor] = right[right_cursor]
+
+    plt.bar(x, merged, align="edge", width=0.8) #creates a bar for each element in myList
     plt.pause(wait_time) #pause to allow the bars to be seen
     plt.clf() #clear frame
 
-    #if list empty then return it 
-    if len(list) <= 1:
-        return list
-
-    #split the left and the right half further
-    left_half, right_half = split(list)
-
-    #sort the left half
-    left = merge_sort_visualized(left_half)
-
-    #sort the right half
-    right = merge_sort_visualized(right_half)
-
-    #return the merged lists
-    return merge(left, right, list)
-
-def split(list):
-
-    #get our midpoint
-    mid = len(list) // 2
-
-    #left list = everything left of midpoint
-    left = list[:mid]
-
-    #right list = everything right of midpoint
-    right = list[mid:]
-
-    #return our lists
-    return left, right
-
-def merge(left, right, list):
-    
-    #empty list and indexes
-    l = []
-    i = 0
-    j = 0
-
-    x = np.arange(0, len(list), 1)
-    wait_time = .000001
-
-    #Sort our sublists 
-    #while index i not greater than the left list and vice versa with right list
-    while i < len(left) and j < len(right):
-
-        plt.bar(x, list, align="edge", width=0.8) #creates a bar for each element in myList
-        plt.pause(wait_time) #pause to allow the bars to be seen
-        plt.clf() #clear frame
-
-        #if left value is less than right then append the value to our temp list l and increment i
-        if left[i] < right[j]:
-            l.append(left[i])
-            i += 1
-        
-        #else then append our right value to our temp list value l
-        else:
-            l.append(right[j])
-            j += 1
-
-    #while i is less than the len of our left list append the value at index i to list l
-    while i < len(left):
-
-        plt.bar(x, list, align="edge", width=0.8) #creates a bar for each element in myList
-        plt.pause(wait_time) #pause to allow the bars to be seen
-        plt.clf() #clear frame
-
-        l.append(left[i])
-        i += 1
-    #while j is less than the len of our right list append the value at index j to list l
-    while j < len(right):
-
-        plt.bar(x, list, align="edge", width=0.8) #creates a bar for each element in myList
-        plt.pause(wait_time) #pause to allow the bars to be seen
-        plt.clf() #clear frame
-
-        l.append(right[j])
-        j += 1
-
-    #return our merged list
-    return l
+    return merged
+plt.show()
 #------------MERGE SORT------------
 
 #------------INSERTION SORT------------
 #Beginning instertion_sort_visualized
-def insertion_sort_visualized(myList):
+def insertion_sort_visualized(arr):
 
-    x = np.arange(0, len(myList), 1)
+    x = np.arange(0, len(arr), 1)
     wait_time = .000001
+        
+    for i in range(len(arr)):
+        cursor = arr[i]
+        pos = i
+        
+        while pos > 0 and arr[pos - 1] > cursor:
 
-    i = 1
-    while(i < len(myList)):
-        j = i
-        while((j > 0) and (myList[j - 1] > myList[j])):
             #showing visualization
-            plt.bar(x, myList, align="edge", width=0.8) #creates a bar for each element in myList
+            plt.bar(x, arr, align="edge", width=0.8) #creates a bar for each element in myList
             plt.pause(wait_time) #pause to allow the bars to be seen
             plt.clf() #clear frame
 
-            temp = myList[j - 1]
-            myList[j - 1] = myList[j]
-            myList[j] = temp
-            j -= 1
-        i += 1
-    return myList
-plt.show()
+            # Swap the number down the list
+            arr[pos] = arr[pos - 1]
+            pos = pos - 1
+        # Break and do the final swap
+        arr[pos] = cursor
+    return arr
 #------------INSERTION SORT------------
 
 #------------QUICK SORT------------
-def quick_sort_visualized(values):
+def partition(array, begin, end):
+    pivot_idx = begin
+    for i in xrange(begin+1, end+1):
+        if array[i] <= array[begin]:
+            pivot_idx += 1
+            array[i], array[pivot_idx] = array[pivot_idx], array[i]
+    array[pivot_idx], array[begin] = array[begin], array[pivot_idx]
+    return pivot_idx
 
-    x = np.arange(0, len(values), 1)
-    wait_time = .000001
+def quick_sort_recursion(array, begin, end):
+    if begin >= end:
+        return
+    pivot_idx = partition(array, begin, end)
+    quick_sort_recursion(array, begin, pivot_idx-1)
+    quick_sort_recursion(array, pivot_idx+1, end)
 
-    plt.bar(x, values, align="edge", width=0.8) #creates a bar for each element in myList
-    plt.pause(wait_time) #pause to allow the bars to be seen
-    #plt.clf() #clear frame
-    #plt.show()
-    #if the list is empty return it
-    if len(values) <= 1:
-        return values
-
-    less_than_pivot = []
-    greater_than_pivot = []
-
-    # Next we need to choose the pivot value. For now, we just grab the first item from the list.
-    pivot = values[0]
-
-    # Then we loop through all the items in the list following the pivot.
-    for value in values[1:]:
-
-        # We check to see whether the current value is less than or equal to the pivot.
-        if value <= pivot:
-        # If it is, we copy it to the sub-list of values less than the pivot.
-            less_than_pivot.append(value)
-        # Otherwise, the current value must be greater than the pivot
-        else:
-        # So we copy it to the other list.
-            greater_than_pivot.append(value)
-    #We call quicksort recursively on the sub-list that's less than the pivot. 
-    #We do the same for the sub-list that's greater than the pivot. 
-    #Merge our lists and our pivot and return
-    plt.clf() #clear frame
-    plt.show()
-    return quick_sort_visualized(less_than_pivot) + [pivot] + quick_sort_visualized(greater_than_pivot)
+def quick_sort(array, begin=0, end=None):
+    if end is None:
+        end = len(array) - 1
+    
+    return quick_sort_recursion(array, begin, end)
 
 
 def __main__ ():
-    sorted, reverse, ran = generate_lists(10)
+    sorted, reverse, ran = generate_lists(30)
 
     #bubble_sort_visualized(ran)
     #insertion_sort_visualized(ran)
-    merge_sort_visualized(ran)
+    #merge_sort_visualized(ran)
     #quick_sort_visualized(ran)
     
     
