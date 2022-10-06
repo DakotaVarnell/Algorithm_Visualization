@@ -156,7 +156,7 @@ def time_bubble(sorted_list, reverse_list, random_list):
 def writeToFile(name, best, worst, avg, length_measured):
     f = open("Time Complexity Analysis.txt", "w") 
     f.write(name)
-    f.write("\n\nLength of list: " + length_measured)
+    f.write("\n\nLength of list: " + str(length_measured))
     f.write("\nBest time: " + best)
     f.write("\nWorst time: " + worst)
     f.write("\nAverage time: " + avg)
@@ -165,7 +165,7 @@ def writeToFile(name, best, worst, avg, length_measured):
 def addToFile(name, best, worst, avg, length_measured):
     f = open("Time Complexity Analysis.txt", "a")
     f.write(name)
-    f.write("\n\nLength of list: " + length_measured)
+    f.write("\n\nLength of list: " + str(length_measured))
     f.write("\nBest time: " + best)
     f.write("\nWorst time: " + worst)
     f.write("\nAverage time: " + avg)
