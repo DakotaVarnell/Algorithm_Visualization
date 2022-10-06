@@ -177,7 +177,13 @@ def insertion_sort_visualized():
 def __main__ ():
 
     #Produce our 3 lists for sorted list, reverse list, and random order list
+<<<<<<< Updated upstream
     sorted, revers, ran = generate_lists(10)
+=======
+    sorted, revers, ran = generate_lists(1000)
+
+
+>>>>>>> Stashed changes
 
     #visualize our bubble sort
     x = bubble_sort_visualized(ran)
@@ -188,7 +194,11 @@ def __main__ ():
     print(quicksort(ran))
     print(insertion_sort(ran))
 
+<<<<<<< Updated upstream
 #Call our main
+=======
+#Call our main function
+>>>>>>> Stashed changes
 __main__()
     
 
