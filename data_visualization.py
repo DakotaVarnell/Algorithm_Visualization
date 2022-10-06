@@ -1,18 +1,4 @@
 import random
-#import matplotlib.pyplot as plt
-#import numpy as np
-
-#------------IMPORTANT------------#
-#matplotlib and numpy must be installed to successfully compile this program
-#if you are using anaconda:
-#conda install matplotlib
-#conda install numpy
-
-#if you are using pip:
-#pip install matplotlib
-#pip install numpy
-
-#it is best practice to use an environment rather than intall in the base env
 
 def generate_lists(n):
     
@@ -30,21 +16,6 @@ def generate_lists(n):
 
     return sorted_list, reversed_list, random_list
 
-#IT'S RECOMMENDED TO USE SMALL LISTS AS INPUT
-def bubble_sort_visualized(myList):
-    x = np.arange(0, len(myList), 1)
-    wait_time = .000001
-    for i in range(len(myList)-1):
-        for j in range(len(myList)-i-1):
-            plt.bar(x, myList) #creates a bar for each element in myList
-            plt.pause(wait_time) #pause to allow the bars to be seen
-            plt.clf() #clear frame
-            if myList[j] > myList[j + 1]: #if the current value is greater than the next
-                myList[j], myList[j+1] = \
-                    myList[j + 1], myList[j] #swap them
-    return myList
-    plt.show()
-    
 
 def bubble_sort(myList):
     for i in range(len(myList)-1):
@@ -119,9 +90,6 @@ def merge(left, right):
     #return our merged list
     return l
 
-def merge_sort_visualized():
-    #implement visualization of merge sort
-    return
 
 def quicksort(values):
     
@@ -150,9 +118,6 @@ def quicksort(values):
     #Merge our lists and our pivot and return
     return quicksort(less_than_pivot) + [pivot] + quicksort(greater_than_pivot)
     
-def quick_sort_visualized():
-    #implement visualization of quick sort
-    return
 
 def insertion_sort(list): 
    
@@ -171,16 +136,11 @@ def insertion_sort(list):
     #return our list
     return list
 
-def insertion_sort_visualized():
-    return
-
 def __main__ ():
 
     #Produce our 3 lists for sorted list, reverse list, and random order list
     sorted, revers, ran = generate_lists(10)
-
-    #visualize our bubble sort
-    x = bubble_sort_visualized(ran)
+   
 
     #Show that all of ours sorts are working properly
     print(bubble_sort(ran))
