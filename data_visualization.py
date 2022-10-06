@@ -157,18 +157,18 @@ def writeToFile(name, best, worst, avg, length_measured):
     f = open("Time Complexity Analysis.txt", "w") 
     f.write(name)
     f.write("\n\nLength of list: " + str(length_measured))
-    f.write("\nBest time: " + best)
-    f.write("\nWorst time: " + worst)
-    f.write("\nAverage time: " + avg)
+    f.write("\nBest time: " + str(best))
+    f.write("\nWorst time: " + str(worst))
+    f.write("\nAverage time: " + str(avg))
     f.close()
 
 def addToFile(name, best, worst, avg, length_measured):
     f = open("Time Complexity Analysis.txt", "a")
     f.write(name)
     f.write("\n\nLength of list: " + str(length_measured))
-    f.write("\nBest time: " + best)
-    f.write("\nWorst time: " + worst)
-    f.write("\nAverage time: " + avg)
+    f.write("\nBest time: " + str(best))
+    f.write("\nWorst time: " + str(worst))
+    f.write("\nAverage time: " + str(avg))
     f.close()
 
 def time_merge(sorted_list, reverse_list, random_list):

@@ -1,0 +1,3 @@
+Bubble Sort
+
+Length of list: 1000
