@@ -22,3 +22,27 @@ Length of list: 1000
 Best time: 0.076
 Worst time: 0.239
 Average time: 0.144
+
+Bubble Sort
+Length of list: 10000
+Best time: 11.594
+Worst time: 19.031
+Average time: 15.267
+
+Merge Sort
+Length of list: 10000
+Best time: 11.594
+Worst time: 19.031
+Average time: 15.267
+
+Quicksort
+Length of list: 10000
+Best time: 11.594
+Worst time: 19.031
+Average time: 15.267
+
+Insertion Sort
+Length of list: 10000
+Best time: 11.594
+Worst time: 19.031
+Average time: 15.267
