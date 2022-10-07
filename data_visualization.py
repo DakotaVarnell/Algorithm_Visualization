@@ -269,12 +269,15 @@ def __main__ ():
     writeToFile(name, best, worst, avg, length)
 
     name = "Merge Sort"
+    worst, best, avg, length = time_merge(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
     name = "Quicksort"
+    worst, best, avg, length = time_quick(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
     name = "Insertion Sort"
+    worst, best, avg, length = time_insertion(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
 
