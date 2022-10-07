@@ -251,14 +251,17 @@ def __main__ ():
     name = "Bubble Sort"
     worst, best, avg, length = time_bubble(sorted, revers, ran)
     writeToFile(name, best, worst, avg, length)
-    
+
     name = "Merge Sort"
+    worst, best, avg, length = time_merge(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
     name = "Quicksort"
+    worst, best, avg, length = time_quick(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
-    
+
     name = "Insertion Sort"
+    worst, best, avg, length = time_insertion(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
 
@@ -283,17 +286,20 @@ def __main__ ():
 
     #Measured at 100000
     sorted, revers, ran = generate_lists(100000)
-    worst, best, avg, length = time_bubble(sorted, revers, ran)
     name = "Bubble Sort"
+    worst, best, avg, length = time_bubble(sorted, revers, ran)
     writeToFile(name, best, worst, avg, length)
-    
+
     name = "Merge Sort"
+    worst, best, avg, length = time_merge(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
     name = "Quicksort"
+    worst, best, avg, length = time_quick(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
     name = "Insertion Sort"
+    worst, best, avg, length = time_insertion(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
 
