@@ -1,48 +1,48 @@
 
 Bubble Sort
 Length of list: 1000
-Best time: 0.076
-Worst time: 0.239
-Average time: 0.144
+Best time: 0.058
+Worst time: 0.202
+Average time: 0.125
 
 Merge Sort
 Length of list: 1000
-Best time: 0.076
-Worst time: 0.239
-Average time: 0.144
+Best time: 0.004
+Worst time: 0.009
+Average time: 0.004
 
 Quicksort
 Length of list: 1000
-Best time: 0.076
-Worst time: 0.239
-Average time: 0.144
+Best time: 0.185
+Worst time: 0.181
+Average time: 0.167
 
 Insertion Sort
 Length of list: 1000
-Best time: 0.076
-Worst time: 0.239
-Average time: 0.144
+Best time: 0.0
+Worst time: 0.001
+Average time: 0.0
 
 Bubble Sort
 Length of list: 10000
-Best time: 11.594
-Worst time: 19.031
-Average time: 15.267
+Best time: 12.036
+Worst time: 27.751
+Average time: 21.886
 
 Merge Sort
 Length of list: 10000
-Best time: 11.594
-Worst time: 19.031
-Average time: 15.267
+Best time: 0.081
+Worst time: 0.101
+Average time: 0.083
 
 Quicksort
 Length of list: 10000
-Best time: 11.594
-Worst time: 19.031
-Average time: 15.267
+Best time: 21.39
+Worst time: 21.257
+Average time: 21.888
 
 Insertion Sort
 Length of list: 10000
-Best time: 11.594
-Worst time: 19.031
-Average time: 15.267
+Best time: 0.002
+Worst time: 0.003
+Average time: 0.002

@@ -1,6 +1,8 @@
 import random
 import time as t
 
+
+
 def generate_lists(n):
     
     sorted_list = []
@@ -76,30 +78,62 @@ def merge(left, right):
     #return our merged list
     return l
 
-def quicksort(values):
-    
-    #if the list is empty return it
-    if len(values) <= 1:
-        return values
-    less_than_pivot = []
-    greater_than_pivot = []
-    # Next we need to choose the pivot value. For now, we just grab the first item from the list.
-    pivot = values[0]
-    # Then we loop through all the items in the list following the pivot.
-    for value in values[1:]:
-        # We check to see whether the current value is less than or equal to the pivot.
-        if value <= pivot:
-        # If it is, we copy it to the sub-list of values less than the pivot.
-            less_than_pivot.append(value)
-        # Otherwise, the current value must be greater than the pivot
-        else:
-        # So we copy it to the other list.
-            greater_than_pivot.append(value)
-    #We call quicksort recursively on the sub-list that's less than the pivot. 
-    #We do the same for the sub-list that's greater than the pivot. 
-    #Merge our lists and our pivot and return
-    return quicksort(less_than_pivot) + [pivot] + quicksort(greater_than_pivot)
-    
+def partition(array,low,high):
+    i = ( low - 1 )
+    x = array[high]
+ 
+    for j in range(low , high):
+        if   array[j] <= x:
+ 
+            i = i+1
+            array[i],array[j] = array[j],array[i]
+ 
+    array[i+1],array[high] = array[high],array[i+1]
+    return (i+1)
+ 
+# low  --> Starting index,
+# high  --> Ending index
+def quicksort(array,low,high):
+ 
+    #  auxiliary stack
+    size = high - low + 1
+    stack = [0] * (size)
+ 
+    top = -1
+ 
+    top = top + 1
+    stack[top] = low
+    top = top + 1
+    stack[top] = high
+ 
+    # Keep popping from stack while is not empty
+    while top >= 0:
+ 
+        # Pop high and low
+        high = stack[top]
+        top = top - 1
+        low = stack[top]
+        top = top - 1
+ 
+        # sorted array
+        p = partition( array, low, high )
+
+        # push left side to stack
+        if p-1 > low:
+            top = top + 1
+            stack[top] = low
+            top = top + 1
+            stack[top] = p - 1
+
+        #  push right side to stack
+        if p+1 < high:
+            top = top + 1
+            stack[top] = p + 1
+            top = top + 1
+            stack[top] = high
+    return array
+ 
+
 def insertion_sort(list): 
    
     # Outer loop to traverse the list 
@@ -198,19 +232,19 @@ def time_quick(sorted_list, reverse_list, random_list):
 
      #record worst time for quicksort
     t0 = t.perf_counter()
-    quicksort(reverse_list)
+    quicksort(reverse_list, 0, length_measured - 1)
     t1 = t.perf_counter()
     worst = t1-t0
 
     #record best time for quicksort
     t0 = t.perf_counter()
-    quicksort(sorted_list)
+    quicksort(sorted_list, 0, length_measured - 1)
     t1 = t.perf_counter()
     best = t1-t0
 
     #record average time for quicksort
     t0 = t.perf_counter()
-    quicksort(random_list)
+    quicksort(random_list, 0, length_measured - 1)
     t1 = t.perf_counter()
     avg = t1-t0
 
@@ -243,6 +277,7 @@ def time_insertion(sorted_list, reverse_list, random_list):
 
 def __main__ ():
 
+    #Clear our file everytime it is written to
     open("Time Complexity Analysis.txt", "w").close()
 
     #Lists starting at 1000
@@ -250,46 +285,55 @@ def __main__ ():
     name = "Bubble Sort"
     worst, best, avg, length = time_bubble(sorted, revers, ran)
     writeToFile(name, best, worst, avg, length)
-    
+
     name = "Merge Sort"
+    worst, best, avg, length = time_merge(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
     name = "Quicksort"
+    worst, best, avg, length = time_quick(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
-    
+
     name = "Insertion Sort"
+    worst, best, avg, length = time_insertion(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
 
-    #Measured at 10000
+    # #Measured at 10000
     sorted, revers, ran = generate_lists(10000)
     name = "Bubble Sort"
     worst, best, avg, length = time_bubble(sorted, revers, ran)
     writeToFile(name, best, worst, avg, length)
 
     name = "Merge Sort"
+    worst, best, avg, length = time_merge(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
     name = "Quicksort"
+    worst, best, avg, length = time_quick(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
     name = "Insertion Sort"
+    worst, best, avg, length = time_insertion(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
 
     #Measured at 100000
     sorted, revers, ran = generate_lists(100000)
-    worst, best, avg, length = time_bubble(sorted, revers, ran)
     name = "Bubble Sort"
+    worst, best, avg, length = time_bubble(sorted, revers, ran)
     writeToFile(name, best, worst, avg, length)
-    
+
     name = "Merge Sort"
+    worst, best, avg, length = time_merge(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
     name = "Quicksort"
+    worst, best, avg, length = time_quick(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
     name = "Insertion Sort"
+    worst, best, avg, length = time_insertion(sorted, revers, ran)
     addToFile(name, best, worst, avg, length)
 
 
