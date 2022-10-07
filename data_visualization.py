@@ -1,17 +1,6 @@
 import random
 import time as t
 
-#import matplotlib.pyplot as plt
-#import numpy as np
-#------------IMPORTANT------------#
-#matplotlib and numpy must be installed to successfully compile this program
-#if you are using anaconda:
-#conda install matplotlib
-#conda install numpy
-#if you are using pip:
-#pip install matplotlib
-#pip install numpy
-#it is best practice to use an environment rather than intall in the base env
 def generate_lists(n):
     
     sorted_list = []
@@ -132,7 +121,6 @@ def time_bubble(sorted_list, reverse_list, random_list):
     
     length_measured = len(reverse_list)
     
-
     #record worst time for bubble sort
     t0 = t.perf_counter()
     bubble_sort(reverse_list)
@@ -154,8 +142,13 @@ def time_bubble(sorted_list, reverse_list, random_list):
     return worst, best, avg, length_measured
 
 def writeToFile(name, best, worst, avg, length_measured):
-    f = open("Time Complexity Analysis.txt", "w") 
-    f.write(name)
+
+    best = round(best, 3)
+    worst = round(worst, 3)
+    avg = round(avg, 3)
+
+    f = open("Time Complexity Analysis.txt", "a") 
+    f.write("\n" + name)
     f.write("\nLength of list: " + str(length_measured))
     f.write("\nBest time: " + str(best))
     f.write("\nWorst time: " + str(worst))
@@ -163,6 +156,11 @@ def writeToFile(name, best, worst, avg, length_measured):
     f.close()
 
 def addToFile(name, best, worst, avg, length_measured):
+    
+    best = round(best, 3)
+    worst = round(worst, 3)
+    avg = round(avg, 3)
+    
     f = open("Time Complexity Analysis.txt", "a")
     f.write("\n" + name)
     f.write("\nLength of list: " + str(length_measured))
@@ -245,6 +243,8 @@ def time_insertion(sorted_list, reverse_list, random_list):
 
 def __main__ ():
 
+    open("Time Complexity Analysis.txt", "w").close()
+
     #Lists starting at 1000
     sorted, revers, ran = generate_lists(1000)
     name = "Bubble Sort"
@@ -264,8 +264,9 @@ def __main__ ():
     #Measured at 10000
     sorted, revers, ran = generate_lists(10000)
     name = "Bubble Sort"
+    worst, best, avg, length = time_bubble(sorted, revers, ran)
     writeToFile(name, best, worst, avg, length)
-    
+
     name = "Merge Sort"
     addToFile(name, best, worst, avg, length)
 
@@ -278,6 +279,7 @@ def __main__ ():
 
     #Measured at 100000
     sorted, revers, ran = generate_lists(100000)
+    worst, best, avg, length = time_bubble(sorted, revers, ran)
     name = "Bubble Sort"
     writeToFile(name, best, worst, avg, length)
     
