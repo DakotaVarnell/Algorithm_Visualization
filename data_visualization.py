@@ -243,6 +243,7 @@ def time_insertion(sorted_list, reverse_list, random_list):
 
 def __main__ ():
 
+    #Clear our file everytime it is written to
     open("Time Complexity Analysis.txt", "w").close()
 
     #Lists starting at 1000
