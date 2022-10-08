@@ -145,7 +145,7 @@ def quicksort_visualized(array,low,high):
 
 
 def __main__():
-    srtd, rvsd, rand = generate_lists(10)
+    # srtd, rvsd, rand = generate_lists(10)
     a = True
 
     while(a):
@@ -162,6 +162,7 @@ def __main__():
 
             case 1: 
                 b = True
+                srtd, rvsd, rand = generate_lists(15)
 
                 print("-----BUBBLE SORT----")
                 print("Would you like to see the:")
@@ -183,6 +184,7 @@ def __main__():
                         b = False
             case 2:
                 b = True
+                srtd, rvsd, rand = generate_lists(15)
 
                 print("-----INSERTION SORT----")
                 print("Would you like to see the:")
@@ -205,6 +207,7 @@ def __main__():
 
             case 3:
                 b = True
+                srtd, rvsd, rand = generate_lists(15)
 
                 print("-----QUICK SORT----")
                 print("Would you like to see the:")
