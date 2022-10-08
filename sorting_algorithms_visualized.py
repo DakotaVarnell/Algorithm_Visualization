@@ -34,15 +34,13 @@ def bubble_sort_visualized(myList):
 
     for i in range(len(myList)-1):
         for j in range(len(myList)-i-1):
-
-            plt.bar(x, myList, align="edge", width=0.8) #creates a bar for each element in myList
-            plt.pause(wait_time) #pause to allow the bars to be seen
-            plt.clf() #clear frame
-
             if myList[j] > myList[j + 1]: #if the current value is greater than the next
                 myList[j], myList[j+1] = \
                     myList[j + 1], myList[j] #swap them
             
+            plt.bar(x, myList, align="edge", width=0.8) #creates a bar for each element in myList
+            plt.pause(wait_time) #pause to allow the bars to be seen
+            plt.clf() #clear frame
     return myList
 plt.show()
 #------------BUBBLE SORT------------#
@@ -59,17 +57,21 @@ def insertion_sort_visualized(arr):
         pos = i
         
         while pos > 0 and arr[pos - 1] > cursor:
-
+            # Swap the number down the list
+            arr[pos] = arr[pos - 1]
+            pos = pos - 1
+            
             #showing visualization
             plt.bar(x, arr, align="edge", width=0.8) #creates a bar for each element in myList
             plt.pause(wait_time) #pause to allow the bars to be seen
             plt.clf() #clear frame
-
-            # Swap the number down the list
-            arr[pos] = arr[pos - 1]
-            pos = pos - 1
         # Break and do the final swap
         arr[pos] = cursor
+
+        #showing visualization again for the final swap
+        plt.bar(x, arr, align="edge", width=0.8) #creates a bar for each element in myList
+        plt.pause(wait_time) #pause to allow the bars to be seen
+        plt.clf() #clear frame
     return arr
 #------------INSERTION SORT------------
 
