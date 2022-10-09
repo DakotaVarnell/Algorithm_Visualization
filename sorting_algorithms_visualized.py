@@ -111,18 +111,16 @@ def quicksort_visualized(array,low,high):
  
     # Keep popping from stack while is not empty
     while top >= 0:
-        
-        #showing visualization
-        plt.bar(x, array, align="edge", width=0.8) #creates a bar for each element in myList
-        plt.pause(wait_time) #pause to allow the bars to be seen
-        plt.clf() #clear frame
-
-
         # Pop high and low
         high = stack[top]
         top = top - 1
         low = stack[top]
         top = top - 1
+
+        # #showing visualization
+        # plt.bar(x, array, align="edge", width=0.8) #creates a bar for each element in myList
+        # plt.pause(wait_time) #pause to allow the bars to be seen
+        # plt.clf() #clear frame
  
         # sorted array
         p = partition( array, low, high )
@@ -134,12 +132,28 @@ def quicksort_visualized(array,low,high):
             top = top + 1
             stack[top] = p - 1
 
+            #showing visualization
+            plt.bar(x, array, align="edge", width=0.8) #creates a bar for each element in myList
+            plt.pause(wait_time) #pause to allow the bars to be seen
+            plt.clf() #clear frame
+
         #  push right side to stack
         if p+1 < high:
             top = top + 1
             stack[top] = p + 1
             top = top + 1
             stack[top] = high
+
+            #showing visualization
+            plt.bar(x, array, align="edge", width=0.8) #creates a bar for each element in myList
+            plt.pause(wait_time) #pause to allow the bars to be seen
+            plt.clf() #clear frame
+
+        #showing visualization
+        plt.bar(x, array, align="edge", width=0.8) #creates a bar for each element in myList
+        plt.pause(wait_time) #pause to allow the bars to be seen
+        plt.clf() #clear frame
+
     return array
 #------------Quick Sort------------#
 #ENDING VISUALIZATION FUNCTINONS
@@ -186,7 +200,7 @@ def __main__():
                         b = False
             case 2:
                 b = True
-                srtd, rvsd, rand = generate_lists(15)
+                srtd, rvsd, rand = generate_lists(20)
 
                 print("-----INSERTION SORT----")
                 print("Would you like to see the:")
@@ -209,7 +223,7 @@ def __main__():
 
             case 3:
                 b = True
-                srtd, rvsd, rand = generate_lists(15)
+                srtd, rvsd, rand = generate_lists(50)
 
                 print("-----QUICK SORT----")
                 print("Would you like to see the:")
