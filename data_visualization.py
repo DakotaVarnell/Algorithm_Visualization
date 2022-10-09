@@ -1,8 +1,6 @@
 import random
 import time as t
 
-
-
 def generate_lists(n):
     
     sorted_list = []
