@@ -6,7 +6,7 @@ import numpy as np
 #----------IMPORTANT----------
 #To run this, you must have matplotlib and numpy installed
 #You must also have Python 3.10 or greater
-#
+#Visualizes the sorting algorithms on smaller datasets
 #
 #Dakota Varnell, Jorge Chavez, Nick Adney
 #CSCI 3330 Algorithms
