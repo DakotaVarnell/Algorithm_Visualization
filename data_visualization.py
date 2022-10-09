@@ -14,6 +14,8 @@ def generate_lists(n):
     for i in reversed(sorted_list):
         reversed_list.append(i) 
     random.shuffle(random_list)
+
+    #Return all lists
     return sorted_list, reversed_list, random_list
     
 def bubble_sort(myList):
