@@ -3,6 +3,7 @@ import time as t
 
 def generate_lists(n):
     
+    #Generates 3 lists, sorted reverse_ordered and random ordered and returns them all
     sorted_list = []
     random_list = []
     for i in range(n):
